@@ -18,7 +18,7 @@ class SoundConjunct {
 			voice_pause: 200
 		};
 
-		this.theme_folder = path.resolve(__dirname, "../themes");
+		this.theme_folder = path.resolve(__dirname, "../../themes");
 		this.sound_params = _.assignWith(def_opts, sound_params, (objValue, srcValue) => {
 			return _.isUndefined(objValue) ? srcValue : objValue;
 		});
@@ -34,8 +34,7 @@ class SoundConjunct {
 	}) {
 		let fnames = _.map(sound_names, (name) => path.resolve(this.theme_folder, sound_theme, name));
 		let out = path.resolve(this.output_directory, outname);
-		console.log("FIN FNAMES", fnames, out);
-		return concat(fnames, out, this.sound_params);
+		return sound_util.concatenate(fnames, out, this.sound_params);
 	}
 
 
