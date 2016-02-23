@@ -58,11 +58,11 @@ class SoundConjunct {
 		let fnames = _.map(sound_names, (name) => path.resolve(this.theme_folder, sound_theme, name));
 		let out = path.resolve(this.output_directory, outname);
 
-		return fs.statAsync(outname)
+		return fs.statAsync(out)
 			.then((stat) => {
 				if(!stat.isFile())
 					return Promise.reject(new Error("Path is not a file."));
-				return outname;
+				return out;
 			})
 			.catch((err) => {
 				console.log("OUTNAME", out, err.message);
