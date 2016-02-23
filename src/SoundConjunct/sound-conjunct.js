@@ -4,7 +4,7 @@ let emitter = require("global-queue");
 let sound_util = require('sound-conjunct');
 let path = require('path');
 let fs = Promise.promisifyAll(require("fs"));
-var getDuration = require('get-audio-duration');
+let getDuration = require('get-audio-duration');
 
 class SoundConjunct {
 	constructor() {
