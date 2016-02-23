@@ -4,7 +4,7 @@ let emitter = require("global-queue");
 let sound_util = require('sound-conjunct');
 let path = require('path');
 let fs = Promise.promisifyAll(require("fs"));
-let MetadataFile = require("thomash-node-audio-metadata");
+var getDuration = require('get-audio-duration');
 
 class SoundConjunct {
 	constructor() {
@@ -34,13 +34,15 @@ class SoundConjunct {
 	actionAudioMetadata({
 		fpath
 	}) {
-		let f = new MetadataFile(fpath);
-		return new Promise((resolve, reject) => {
-				if(!fpath)
-					resolve(false);
-				f.readTaglibMetadata(function(data) {
-					resolve(data);
-				});
+		if !fpath
+		return false;
+		return getDuration(fpath)
+			.then((duration) => {
+				return {
+					audio: {
+						length: duration
+					}
+				};
 			})
 			.catch((err) => {
 				console.log("AUDIO MD ERR", err.stack);

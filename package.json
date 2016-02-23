@@ -45,11 +45,11 @@
   },
   "dependencies": {
     "bluebird": "^3.3.1",
+    "get-audio-duration": "0.0.1",
     "global-queue": "git+https://github.com/artificial-life/global-queue",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "lodash": "^4.5.1",
-    "sound-conjunct": "git+https://github.com/sdk-group/sound-conjunct.git",
-    "thomash-node-audio-metadata": "^1.0.0"
+    "sound-conjunct": "git+https://github.com/sdk-group/sound-conjunct.git"
   }
 }
