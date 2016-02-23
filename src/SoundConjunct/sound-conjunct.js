@@ -34,8 +34,8 @@ class SoundConjunct {
 	actionAudioMetadata({
 		fpath
 	}) {
-		if !fpath
-		return false;
+		if(!fpath)
+			return false;
 		return getDuration(fpath)
 			.then((duration) => {
 				return {
