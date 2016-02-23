@@ -3,6 +3,7 @@
 let emitter = require("global-queue");
 let sound_util = require('sound-conjunct');
 let path = require('path');
+let fs = Promise.promisifyAll(require("fs"));
 
 class SoundConjunct {
 	constructor() {
@@ -10,7 +11,9 @@ class SoundConjunct {
 	}
 
 	init({
-		sound_params, output_directory, theme_params
+		sound_params,
+		output_directory,
+		theme_params
 	}) {
 		let def_opts = {
 			bits: 16,
@@ -34,6 +37,7 @@ class SoundConjunct {
 	}) {
 		let fnames = _.map(sound_names, (name) => path.resolve(this.theme_folder, sound_theme, name));
 		let out = path.resolve(this.output_directory, outname);
+		console.log("OUTNAME", out);
 		return sound_util.concatenate(fnames, out, this.sound_params);
 	}
 
