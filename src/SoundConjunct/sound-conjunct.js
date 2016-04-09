@@ -1,6 +1,6 @@
 'use strict'
 
-let emitter = require("global-queue");
+
 let sound_util = require('sound-conjunct');
 let path = require('path');
 let fs = Promise.promisifyAll(require("fs"));
@@ -8,7 +8,7 @@ let getDuration = require('get-audio-duration');
 
 class SoundConjunct {
 	constructor() {
-		this.emitter = emitter;
+		this.emitter = message_bus;
 	}
 
 	init({
@@ -34,7 +34,7 @@ class SoundConjunct {
 	actionAudioMetadata({
 		fpath
 	}) {
-		if(!fpath)
+		if (!fpath)
 			return false;
 		return getDuration(fpath)
 			.then((duration) => {
@@ -60,7 +60,7 @@ class SoundConjunct {
 
 		return fs.statAsync(out)
 			.then((stat) => {
-				if(!stat.isFile())
+				if (!stat.isFile())
 					return Promise.reject(new Error("Path is not a file."));
 				return out;
 			})
@@ -69,7 +69,6 @@ class SoundConjunct {
 				return sound_util.concatenate(fnames, out, this.sound_params);
 			});
 	}
-
 
 
 }
