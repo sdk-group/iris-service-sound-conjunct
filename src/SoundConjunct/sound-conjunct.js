@@ -60,13 +60,16 @@ class SoundConjunct {
 
 		return fs.statAsync(out)
 			.then((stat) => {
-				if (!stat.isFile())
-					return Promise.reject(new Error("Path is not a file."));
-				return out;
+				if (!stat.isFile()) {
+					return sound_util.concatenate(fnames, out, this.sound_params);
+				} else {
+					return true;
+				}
 			})
+			.then(res => out)
 			.catch((err) => {
 				console.log("OUTNAME", out, err.message);
-				return sound_util.concatenate(fnames, out, this.sound_params);
+				return out;
 			});
 	}
 
