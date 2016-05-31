@@ -66,6 +66,9 @@ class SoundConjunct {
 					return true;
 				}
 			})
+			.catch(err => {
+				return sound_util.concatenate(fnames, out, this.sound_params);
+			})
 			.then(res => out)
 			.catch((err) => {
 				console.log("OUTNAME", out, err.message);
