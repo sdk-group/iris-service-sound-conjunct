@@ -45,7 +45,7 @@ class SoundConjunct {
 				};
 			})
 			.catch((err) => {
-				console.log("AUDIO MD ERR", err.stack);
+				console.log("AUDIO MD ERR", err.message);
 				return false;
 			});
 	}
