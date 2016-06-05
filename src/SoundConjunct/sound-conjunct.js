@@ -80,7 +80,7 @@ class SoundConjunct {
 						out
 					});
 			})
-			.finally(() => {
+			.then(() => {
 				global.logger && logger.info("Sox command finalized for %s", out);
 				return out;
 			});
