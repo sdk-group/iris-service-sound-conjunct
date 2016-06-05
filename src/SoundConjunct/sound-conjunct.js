@@ -81,11 +81,7 @@ class SoundConjunct {
 					});
 			})
 			.finally(() => {
-				global.logger && logger.info(
-						module: 'sound-conjunct',
-						method: 'make-phrase',
-						out
-					});
+				global.logger && logger.info("Sox command finalized for %s", out);
 				return out;
 			});
 	}
