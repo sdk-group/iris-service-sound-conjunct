@@ -46,6 +46,11 @@ class SoundConjunct {
 			})
 			.catch((err) => {
 				console.log("AUDIO MD ERR", err.message);
+				global.logger && logger.error(
+					err, {
+						module: 'sound-conjunct',
+						method: 'audio-metadata'
+					});
 				return false;
 			});
 	}
@@ -60,18 +65,27 @@ class SoundConjunct {
 
 		return fs.statAsync(out)
 			.then((stat) => {
-				if (!stat.isFile()) {
-					return sound_util.concatenate(fnames, out, this.sound_params);
-				} else {
-					return true;
-				}
+				return stat.isFile();
 			})
-			.catch(err => {
-				return sound_util.concatenate(fnames, out, this.sound_params);
+			.catch(err => false)
+			.then((res) => {
+				return !res && sound_util.concatenate(fnames, out, this.sound_params);
 			})
-			.then(res => out)
 			.catch((err) => {
 				console.log("OUTNAME", out, err.message);
+				global.logger && logger.error(
+					err, {
+						module: 'sound-conjunct',
+						method: 'make-phrase',
+						out
+					});
+			})
+			.finally(() => {
+				global.logger && logger.info(
+						module: 'sound-conjunct',
+						method: 'make-phrase',
+						out
+					});
 				return out;
 			});
 	}
