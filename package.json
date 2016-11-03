@@ -52,6 +52,7 @@
 		"bluebird": "^3.4.3",
 		"get-audio-duration": "0.0.1",
 		"global-queue": "git+https://github.com/artificial-life/global-queue.git#experiments",
+		"iris-builder": "git+https://github.com/sdk-group/iris-builder.git",
 		"gulp": "^3.9.1",
 		"gulp-babel": "^6.1.2",
 		"lodash": "^4.15.0",
