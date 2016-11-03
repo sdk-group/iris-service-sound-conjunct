@@ -8,6 +8,7 @@ let tasks = [];
 
 module.exports = {
 	module: require('./sound-conjunct.js'),
+	name: 'sound-conjunct',
 	permissions: [],
 	exposed: true,
 	tasks: tasks,
